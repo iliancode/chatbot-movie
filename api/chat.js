@@ -1,4 +1,15 @@
-const { InferenceClient } = require("@huggingface/inference");// Fallback function si l'API IA ne marche pasfunction getMovieRecommendations(query) {    return `Voici quelques recommandations de films basées sur "${query}" :\n\n1. **Inception** - Un thriller de science-fiction complexe\n2. **The Matrix** - Action cyberpunk révolutionnaire\n3. **Interstellar** - Science-fiction émotionnelle\n4. **Pulp Fiction** - Crime culte de Tarantino\n5. **The Dark Knight** - Super-héros sombre et réaliste`;}module.exports = async (req, res) => {    // CORS    res.setHeader('Access-Control-Allow-Origin', '*');    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+const { InferenceClient } = require("@huggingface/inference");
+
+// Fallback function si l'API IA ne marche pas
+function getMovieRecommendations(query) {
+    return `Voici quelques recommandations de films basées sur "${query}" :\n\n1. **Inception** - Un thriller de science-fiction complexe\n2. **The Matrix** - Action cyberpunk révolutionnaire\n3. **Interstellar** - Science-fiction émotionnelle\n4. **Pulp Fiction** - Crime culte de Tarantino\n5. **The Dark Knight** - Super-héros sombre et réaliste`;
+}
+
+module.exports = async (req, res) => {
+    // CORS
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
@@ -50,4 +61,5 @@ const { InferenceClient } = require("@huggingface/inference");// Fallback functi
         console.error('Erreur:', error);
         return res.json({ response: getMovieRecommendations(req.body?.message || 'films populaires') });
     }
+};
 
