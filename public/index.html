@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Recommandateur de Films IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Chatbot Cinéma</h1>
+            <p>Demandez-moi des recommandations de films et je vous aiderai à trouver votre prochain film préféré !</p>
+        </header>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <strong>🤖 Bot Ciné:</strong> Bonjour ! Je suis votre assistant IA pour les recommandations de films. Dites-moi quel genre de films vous aimez ou votre humeur du moment, et je vous suggérerai de super films !
+                    </div>
+                    <div class="message-time"></div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="Demandez des recommandations de films... (ex: 'Je veux un film drôle' ou 'Suggérez des films d'action comme John Wick')"
+                        maxlength="500"
+                    >
+                    <button id="sendButton">
+                        <span id="sendIcon">➤</span>
+                        <span id="loadingIcon" class="loading hidden">⟳</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="suggestions">
+            <h3>💡 Essayez de demander :</h3>
+            <div class="suggestion-chips">
+                <button class="suggestion-chip" data-message="Je veux une comédie romantique">Comédie Romantique</button>
+                <button class="suggestion-chip" data-message="Suggérez des films de science-fiction">Films Sci-Fi</button>
+                <button class="suggestion-chip" data-message="J'ai envie d'un thriller">Films Thriller</button>
+                <button class="suggestion-chip" data-message="Quels sont les bons films d'horreur ?">Films d'Horreur</button>
+                <button class="suggestion-chip" data-message="Recommandez des films familiaux">Films Familiaux</button>
+                <button class="suggestion-chip" data-message="J'adore les films comme Matrix">Comme Matrix</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Propulsé par l'IA • Recommandations de films gratuites</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
