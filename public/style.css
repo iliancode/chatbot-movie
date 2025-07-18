@@ -6,9 +6,9 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     min-height: 100vh;
-    color: #333;
+    color: #1f1f1f;
 }
 
 .container {
@@ -33,7 +33,7 @@ header {
 header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #dc2626, #b91c1c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -41,7 +41,7 @@ header h1 {
 
 header p {
     font-size: 1.1rem;
-    color: #666;
+    color: #4a4a4a;
 }
 
 .chat-container {
@@ -79,7 +79,7 @@ header p {
 }
 
 .user-message .message-content {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #dc2626, #b91c1c);
     color: white;
     margin-left: auto;
     border-bottom-right-radius: 5px;
@@ -87,14 +87,14 @@ header p {
 
 .bot-message .message-content {
     background: #f8f9fa;
-    color: #333;
+    color: #1f1f1f;
     border: 1px solid #e9ecef;
     border-bottom-left-radius: 5px;
 }
 
 .message-time {
     font-size: 0.8rem;
-    color: #999;
+    color: #7a7a7a;
     margin-top: 5px;
     text-align: right;
 }
@@ -125,11 +125,11 @@ header p {
 }
 
 #messageInput:focus {
-    border-color: #667eea;
+    border-color: #dc2626;
 }
 
 #sendButton {
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #dc2626, #b91c1c);
     color: white;
     border: none;
     width: 50px;
@@ -172,7 +172,7 @@ header p {
 
 .suggestions h3 {
     margin-bottom: 15px;
-    color: #333;
+    color: #1f1f1f;
     font-size: 1.1rem;
 }
 
@@ -183,9 +183,9 @@ header p {
 }
 
 .suggestion-chip {
-    background: rgba(102, 126, 234, 0.1);
-    border: 1px solid #667eea;
-    color: #667eea;
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid #dc2626;
+    color: #dc2626;
     padding: 8px 16px;
     border-radius: 20px;
     cursor: pointer;
@@ -194,7 +194,7 @@ header p {
 }
 
 .suggestion-chip:hover {
-    background: #667eea;
+    background: #dc2626;
     color: white;
     transform: translateY(-2px);
 }
@@ -260,10 +260,10 @@ footer {
 }
 
 .chat-messages::-webkit-scrollbar-thumb {
-    background: #667eea;
+    background: #dc2626;
     border-radius: 3px;
 }
 
 .chat-messages::-webkit-scrollbar-thumb:hover {
-    background: #5a6fd8;
+    background: #b91c1c;
 }
