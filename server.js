@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const hfClient = new InferenceClient( process.env.HF_TOKEN);
+
 app.use(cors());
 app.use(express.json());
 
