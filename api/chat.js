@@ -1,29 +1,21 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
 const { InferenceClient } = require("@huggingface/inference");
-const { getMovieRecommendations } = require('./movieRecommendations');
-require('dotenv').config();
+const { getMovieRecommendations } = require('../movieRecommendations');
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const hfClient = new InferenceClient(process.env.HF_TOKEN);
 
-const hfClient = new InferenceClient( process.env.HF_TOKEN);
-app.use(cors());
-app.use(express.json());
+module.exports = async (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-app.use((req, res, next) => {
-    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
-    next();
-});
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
 
-app.use(express.static('public'));
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.post('/api/chat', async (req, res) => {
     try {
         const { message } = req.body;
         
@@ -49,27 +41,18 @@ app.post('/api/chat', async (req, res) => {
             });
             
             if (chatCompletion.choices && chatCompletion.choices.length > 0) {
-                console.log(' Réponse:');
-                res.json({ response: chatCompletion.choices[0].message.content });
-                return;
+                console.log('Réponse IA reçue');
+                return res.json({ response: chatCompletion.choices[0].message.content });
             }
             
         } catch (apiError) {
-            console.log('modèle IA fail:', apiError.message);
+            console.log('Modèle IA fail:', apiError.message);
         }
 
-        res.json({ response: getMovieRecommendations(message) });
+        return res.json({ response: getMovieRecommendations(message) });
 
     } catch (error) {
         console.error('Erreur :', error.message);
-        res.json({ response: getMovieRecommendations(message) });
+        return res.json({ response: getMovieRecommendations(message) });
     }
-});
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`serveur sur : http://localhost:${PORT}`);
-});
-
-// Export pour Vercel
-module.exports = app;
+};
